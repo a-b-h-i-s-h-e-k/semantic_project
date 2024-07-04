@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Query Results</title>
+</head>
+<body>
+    <h1>Query Results</h1>
+    <table border="1">
+        <tr>
+            {% for head in results["head"]["vars"] %}
+                <th>{{ head }}</th>
+            {% endfor %}
+        </tr>
+        {% for result in results["results"]["bindings"] %}
+            <tr>
+                {% for head in results["head"]["vars"] %}
+                    <td>{{ result[head]["value"] }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back</a>
+</body>
+</html>

@@ -1,0 +1,353 @@
+The error you're encountering indicates that the data in the Adult_Mortality column is not in the correct format. Specifically, 
+it contains floating-point numbers, while the column is defined as INT in your table schema.
+
+To resolve this, you need to modify the schema to accept floating-point numbers or convert the data to integers. 
+Here, I'll provide the updated schema to accept floating-point numbers and the necessary steps to import the data correctly.
+
+Updated Table Schema
+Update the life_expectancy table to use FLOAT for columns that can have decimal values:
+
+
+DROP TABLE IF EXISTS life_expectancy;
+
+CREATE TABLE life_expectancy (
+    Country VARCHAR(100),
+    country_code VARCHAR(10),
+    region VARCHAR(100),
+    Year INT,
+    Life_Expectancy FLOAT,
+    life_exp60 FLOAT,
+    Adult_Mortality FLOAT,
+    Infant_Deaths FLOAT,
+    age1_4mort FLOAT,
+    alcohol FLOAT,
+    bmi FLOAT,
+    age5_19thinness FLOAT,
+    age5_19obesity FLOAT,
+    hepatitis FLOAT,
+    measles FLOAT,
+    polio FLOAT,
+    diphtheria FLOAT,
+    basic_water FLOAT,
+    doctors FLOAT,
+    hospitals FLOAT,
+    gni_capita FLOAT,
+    gghe_d FLOAT,
+    che_gdp FLOAT,
+    une_pop FLOAT,
+    une_infant FLOAT,
+    une_life FLOAT,
+    une_hiv FLOAT,
+    une_gni FLOAT,
+    une_poverty FLOAT,
+    une_edu_spend FLOAT,
+    une_literacy FLOAT,
+    une_school FLOAT
+);
+
+DROP TABLE IF EXISTS relay_whs;
+
+CREATE TABLE relay_whs (
+    Country VARCHAR(100),
+    IND_NAME VARCHAR(100),
+    DIM_SEX VARCHAR(10),
+    Value FLOAT,
+    Indicator VARCHAR(200)
+);
+Steps to Import Data Using \copy
+Ensure the CSV Files Are Accessible:
+
+Place your CSV files (who_life_exp.csv and RELAY_WHS.csv) in a location accessible by the psql client.
+Run the psql Client:
+
+Open your terminal and start the psql session for your health_data database:
+sh
+Copy code
+psql -U healthuser -d health_data
+Create the Tables:
+
+Copy and paste the updated table schema commands into your psql session and execute them.
+Import Data:
+
+Use the \copy command to import data from the CSV files. Make sure to specify the correct path to your CSV files.
+sql
+Copy code
+\copy life_expectancy(Country, country_code, region, Year, Life_Expectancy, life_exp60, Adult_Mortality, Infant_Deaths, age1_4mort, alcohol, bmi, age5_19thinness, age5_19obesity, hepatitis, measles, polio, diphtheria, basic_water, doctors, hospitals, gni_capita, gghe_d, che_gdp, une_pop, une_infant, une_life, une_hiv, une_gni, une_poverty, une_edu_spend, une_literacy, une_school) FROM '/full/path/to/who_life_exp.csv' DELIMITER ',' CSV HEADER;
+
+\copy relay_whs(Country, IND_NAME, DIM_SEX, Value) FROM '/full/path/to/RELAY_WHS.csv' DELIMITER ',' CSV HEADER;
+
+-- Combine IND_NAME and DIM_SEX to form the Indicator column
+UPDATE relay_whs
+SET Indicator = CONCAT(IND_NAME, '_', DIM_SEX);
+Notes
+Adjust File Paths:
+
+Ensure that the paths to who_life_exp.csv and RELAY_WHS.csv are correct and accessible from your machine where the psql client is running.
+Combining Columns:
+
+The UPDATE statement combines IND_NAME and DIM_SEX to create a unique Indicator value in the relay_whs table.
+By following these steps, you should be able to create the tables and populate them with data correctly.
+
+
+
+
+
+
+
+
+
+
+
+
+# Great, it looks like you successfully imported the data into the life_expectancy table. Now, let's import the data into the relay_whs table and combine IND_NAME and DIM_SEX to form the Indicator column.
+
+Step-by-Step Instructions
+Import Data into relay_whs Table:
+
+sql
+Copy code
+\copy relay_whs(Country, IND_NAME, DIM_SEX, Value) FROM 'RELAY_WHS.csv' DELIMITER ',' CSV HEADER;
+Combine IND_NAME and DIM_SEX to Form Indicator Column:
+
+sql
+Copy code
+UPDATE relay_whs
+SET Indicator = CONCAT(IND_NAME, '_', DIM_SEX);
+Complete SQL Script
+Below is the complete script that you can execute in your psql session to import the data and update the Indicator column.
+
+sql
+Copy code
+-- Import data into the relay_whs table
+\copy relay_whs(Country, IND_NAME, DIM_SEX, Value) FROM 'RELAY_WHS.csv' DELIMITER ',' CSV HEADER;
+
+-- Combine IND_NAME and DIM_SEX to form the Indicator column
+UPDATE relay_whs
+SET Indicator = CONCAT(IND_NAME, '_', DIM_SEX);
+Verifying the Data
+After running the above commands, you can verify that the data was imported correctly and that the Indicator column was updated properly.
+
+sql
+Copy code
+-- Verify data in life_expectancy table
+SELECT * FROM life_expectancy LIMIT 10;
+
+-- Verify data in relay_whs table
+SELECT * FROM relay_whs LIMIT 10;
+By following these steps, you should be able to successfully import the data into both tables and perform the necessary updates. If you encounter any errors, please let me know, and I'll help you troubleshoot further.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step 3: Generate Direct Mapping
+Use Ontop CLI to generate the direct mapping:
+
+
+--> ./ontop bootstrap -m mapping.obda -p basic.properties -t ontology.ttl -b http://example.org/
+
+This command generates two files: mapping.obda and ontology.ttl.
+
+
+Step 4: Convert Direct Mapping to R2RML
+Convert the OBDA mapping to R2RML format:
+
+
+--> ./ontop mapping to-r2rml -p basic.properties -i mapping.obda -o mapping.ttl
+
+# R2RML mapping file mapping.ttl written!
+
+
+
+
+Summary of File Names and Extensions
+step5: Ontology File: ontology.ttl
+
+step6: R2RML Mapping File for life_expectancy: life_expectancy_mapping.ttl
+R2RML Mapping File for relay_whs: relay_whs_mapping.ttl
+Generated RDF Dataset for life_expectancy: life_expectancy_rdf_dataset.ttl
+Generated RDF Dataset for relay_whs: relay_whs_rdf_dataset.ttl
+
+Step 7: Generate the RDF Dataset
+Use the Ontop CLI to generate the RDF dataset. Open your terminal and navigate to the directory where Ontop CLI is located. Then, run the following commands:
+
+For the life_expectancy table:
+
+--> ./ontop materialize -m life_expectancy_mapping.ttl -p basic.properties -t ontology1.ttl -o life_expectancy_rdf_dataset.ttl -f turtle
+
+
+For the relay_whs table:
+
+
+--> ./ontop materialize -m relay_whs_mapping.ttl -p basic.properties -t ontology1.ttl -o relay_whs_rdf_dataset.ttl -f turtle
+
+
+
+Step 8: Query the RDF Dataset
+Here are some example SPARQL queries you can use to query the generated RDF dataset.
+
+
+
+
+How to Run SPARQL Queries in Ontop
+Start Ontop CLI:
+Ensure you are in the directory where Ontop CLI is installed.
+
+Run a SPARQL Query:
+Use the following command to run a SPARQL query against your RDF dataset.
+
+
+--> ./ontop query -m life_expectancy_mapping.ttl -p basic.properties -t ontology1.ttl -q query1_list_countries.sparql
+Replace query1_list_countries.sparql with the respective query file name for each query you want to run.
+
+-->  ./ontop query -m relay_whs_mapping.ttl -p basic.properties -t ontology1.ttl -q query11_indicator_and_their_values.sparql
+(for run relay_whs).
+
+
+
+
+
+
+
+## Materializing life_expectancy Data
+Ensure the life_expectancy_mapping.ttl, basic.properties, and ontology1.ttl files are properly set up.
+
+Run the materialization command for life_expectancy:
+
+
+--> ./ontop materialize -m life_expectancy_mapping.ttl -p basic.properties -t ontology1.ttl -o life_expectancy_rdf_dataset.ttl -f turtle
+
+
+Run the materialization command for relay_whs:
+
+
+--> ./ontop materialize -m relay_whs_mapping.ttl -p basic.properties -t ontology1.ttl -o relay_whs_rdf_dataset.ttl -f turtle
+
+
+
+Step 9: Design the Ontology Graph
+Using Protégé or another RDF tool, you can visualize the ontology. 
+Ensure that your ontology includes at least 15 classes as described.
+
+Step 10: Develop an Application
+Create an application that uses the RDF data and queries it using SPARQL. 
+This application could be a web interface where users can input queries and get results from the RDF dataset.
+
+## Summary of File Names and Extensions
+Ontology File: ontology.ttl
+R2RML Mapping File for life_expectancy: life_expectancy_mapping.ttl
+R2RML Mapping File for relay_whs: relay_whs_mapping.ttl
+Generated RDF Dataset for life_expectancy: life_expectancy_rdf_dataset.ttl
+Generated RDF Dataset for relay_whs: relay_whs_rdf_dataset.ttl
+If you follow these steps, you should be able to successfully create the ontology, map your database, 
+generate the RDF datasets, and query them using SPARQL. If you have any further questions or need additional 
+assistance, feel free to ask!
+
+
+
+
+
+
+
+
+=====================================================================================================================================================================================================================================================
+
+
+
+
+Checking the Ontology and Database Mapping
+To check the ontology and database mapping:
+
+Open the ontology file in Protégé:
+
+Open Protégé.
+Load your ontology file (ontology1.ttl).
+Explore the classes, properties, and individuals in the ontology to understand the structure and the 
+relationships defined.
+
+Check the R2RML mapping files:
+
+Open the R2RML mapping files (life_expectancy_mapping.ttl and relay_whs_mapping.ttl) in a text editor or an RDF viewer.
+Verify the mappings to ensure that the database columns are correctly mapped to the ontology classes and properties.
+Run SPARQL queries:
+
+Execute the provided SPARQL queries using Ontop CLI to see the mapped data.
+Check the output to ensure that the data from your database is correctly represented in RDF format.
+Summary of Commands and Files
+Ontology File: ontology1.ttl
+R2RML Mapping File for life_expectancy: life_expectancy_mapping.ttl
+R2RML Mapping File for relay_whs: relay_whs_mapping.ttl
+Generated RDF Dataset for life_expectancy: life_expectancy_rdf_dataset.ttl
+Generated RDF Dataset for relay_whs: relay_whs_rdf_dataset.ttl
+SPARQL Query Files: query1_list_countries.sparql, query2_life_expectancy_by_country_and_year.sparql, 
+query3_indicators_by_country.sparql, etc.
+Use these steps to complete the setup, generate the RDF datasets, and run queries against 
+your ontology and mapped database. If you encounter any issues or need further assistance, feel free to ask!
+
+
+
+==============================================================================================================================================================================================================================================
+
+
+-> protege
+
+
+
+
+
+
+To download, install, and use Protégé on Debian, follow these steps:
+
+1. Downloading and Installing Protégé on Debian
+Install Java (if not already installed)
+Protégé requires Java to run. You can install it using the following command:
+
+
+sudo apt update
+sudo apt install default-jre
+-> Download Protégé
+-> Download the latest version of Protégé from the official website or via a direct link:
+
+
+wget https://github.com/protegeproject/protege-distribution/releases/download/v5.5.0/Protege-5.5.0-linux.tar.gz
+-> Extract the downloaded archive
+
+
+tar -xvzf Protege-5.5.0-linux.tar.gz
+-> Move the extracted files to a suitable directory
+
+
+sudo mv Protege-5.5.0 /opt/protege
+-> Create a symbolic link to make Protégé easily accessible
+
+
+sudo ln -s /opt/protege/run.sh /usr/local/bin/protege
+2. Running Protégé
+Run Protégé
+
+protege
+
+3. Loading Your Ontology File in Protégé
+Open Protégé
+
+
+protege
+
+
+=================================================================================================================================================================================
+
+
+(myenv) debian@debian:~/Desktop/Semantics_Project$ cd ontop/
+(myenv) debian@debian:~/Desktop/Semantics_Project/ontop$ python app.py
+
+
+# flask run(it is for running the app)

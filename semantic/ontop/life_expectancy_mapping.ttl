@@ -1,0 +1,38 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix : <http://example.org/voc#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#TriplesMap1>
+    rr:logicalTable [ rr:tableName "life_expectancy" ];
+    rr:subjectMap [ rr:template "http://example.org/life_expectancy/{Country}" ; rr:class :Country ];
+    rr:predicateObjectMap [ rr:predicate :hasCountryCode ; rr:objectMap [ rr:column "country_code" ; rr:datatype xsd:string ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasRegion ; rr:objectMap [ rr:column "region" ; rr:datatype xsd:string ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasYear ; rr:objectMap [ rr:column "Year" ; rr:datatype xsd:integer ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasLifeExpectancy ; rr:objectMap [ rr:column "Life_Expectancy" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasLifeExp60 ; rr:objectMap [ rr:column "life_exp60" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasAdultMortality ; rr:objectMap [ rr:column "Adult_Mortality" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasInfantDeaths ; rr:objectMap [ rr:column "Infant_Deaths" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasAge1_4Mort ; rr:objectMap [ rr:column "age1_4mort" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasAlcohol ; rr:objectMap [ rr:column "alcohol" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasBMI ; rr:objectMap [ rr:column "bmi" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasAge5_19Thinness ; rr:objectMap [ rr:column "age5_19thinness" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasAge5_19Obesity ; rr:objectMap [ rr:column "age5_19obesity" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasHepatitis ; rr:objectMap [ rr:column "hepatitis" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasMeasles ; rr:objectMap [ rr:column "measles" ; rr:datatype xsd:integer ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasPolio ; rr:objectMap [ rr:column "polio" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasDiphtheria ; rr:objectMap [ rr:column "diphtheria" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasBasicWater ; rr:objectMap [ rr:column "basic_water" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasDoctors ; rr:objectMap [ rr:column "doctors" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasHospitals ; rr:objectMap [ rr:column "hospitals" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasGNICapita ; rr:objectMap [ rr:column "gni_capita" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasGGHED ; rr:objectMap [ rr:column "gghe_d" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasCHEGDP ; rr:objectMap [ rr:column "che_gdp" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasUNEPop ; rr:objectMap [ rr:column "une_pop" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasUNEInfant ; rr:objectMap [ rr:column "une_infant" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasUNELife ; rr:objectMap [ rr:column "une_life" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasUNEHIV ; rr:objectMap [ rr:column "une_hiv" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasUNEGNI ; rr:objectMap [ rr:column "une_gni" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasUNEPoverty ; rr:objectMap [ rr:column "une_poverty" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasUNEEduSpend ; rr:objectMap [ rr:column "une_edu_spend" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasUNELiteracy ; rr:objectMap [ rr:column "une_literacy" ; rr:datatype xsd:decimal ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasUNESchool ; rr:objectMap [ rr:column "une_school" ; rr:datatype xsd:decimal ] ] .

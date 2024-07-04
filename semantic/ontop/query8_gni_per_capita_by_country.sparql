@@ -1,0 +1,5 @@
+PREFIX : <http://example.org/voc#>
+SELECT ?country ?gniCapita {
+  ?country a :Country ;
+           :hasGNICapita ?gniCapita .
+}

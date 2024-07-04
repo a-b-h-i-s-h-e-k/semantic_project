@@ -1,0 +1,30 @@
+CREATE TABLE life_expectancy (
+    Country VARCHAR(100),
+    Year INT,
+    Life_Expectancy FLOAT,
+    Adult_Mortality INT,
+    Infant_Deaths INT,
+    Alcohol FLOAT,
+    Percentage_Expenditure FLOAT,
+    Hepatitis_B FLOAT,
+    Measles INT,
+    BMI FLOAT,
+    Under_Five_Deaths INT,
+    Polio FLOAT,
+    Total_Expenditure FLOAT,
+    Diphtheria FLOAT,
+    HIV_AIDS FLOAT,
+    GDP FLOAT,
+    Population FLOAT,
+    Thinness_1_19_Years FLOAT,
+    Thinness_5_9_Years FLOAT,
+    Income_Composition_Of_Resources FLOAT,
+    Schooling FLOAT
+);
+
+CREATE TABLE relay_whs (
+    Country VARCHAR(100),
+    Indicator VARCHAR(100),
+    Value FLOAT
+);
+\q

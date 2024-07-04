@@ -1,0 +1,273 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+
+<urn:MAPPING-ID1> a rr:TriplesMap;
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:double;
+          rr:column "une_life";
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://example.org/life_expectancy#une_life>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#une_gni>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:column "une_gni";
+          rr:datatype xsd:double
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#une_poverty>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "une_poverty";
+          rr:datatype xsd:double
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:double;
+          rr:column "une_hiv";
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://example.org/life_expectancy#une_hiv>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#country_code>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "country_code";
+          rr:datatype xsd:string
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "une_infant";
+          rr:datatype xsd:double
+        ];
+      rr:predicate <http://example.org/life_expectancy#une_infant>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#country>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:string;
+          rr:column "country"
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "che_gdp";
+          rr:datatype xsd:double;
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://example.org/life_expectancy#che_gdp>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#une_pop>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:column "une_pop";
+          rr:datatype xsd:double
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:double;
+          rr:column "une_edu_spend"
+        ];
+      rr:predicate <http://example.org/life_expectancy#une_edu_spend>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#une_school>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:double;
+          rr:termType rr:Literal;
+          rr:column "une_school"
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:double;
+          rr:column "une_literacy";
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://example.org/life_expectancy#une_literacy>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#measles>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "measles";
+          rr:datatype xsd:double;
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:double;
+          rr:column "hepatitis"
+        ];
+      rr:predicate <http://example.org/life_expectancy#hepatitis>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#age5_19obesity>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "age5_19obesity";
+          rr:datatype xsd:double
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#bmi>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:double;
+          rr:column "bmi";
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "age5_19thinness";
+          rr:datatype xsd:double
+        ];
+      rr:predicate <http://example.org/life_expectancy#age5_19thinness>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "alcohol";
+          rr:termType rr:Literal;
+          rr:datatype xsd:double
+        ];
+      rr:predicate <http://example.org/life_expectancy#alcohol>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:double;
+          rr:column "gghe_d";
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://example.org/life_expectancy#gghe_d>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "gni_capita";
+          rr:datatype xsd:double
+        ];
+      rr:predicate <http://example.org/life_expectancy#gni_capita>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#hospitals>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:double;
+          rr:column "hospitals";
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:double;
+          rr:column "doctors"
+        ];
+      rr:predicate <http://example.org/life_expectancy#doctors>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#diphtheria>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "diphtheria";
+          rr:datatype xsd:double
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#basic_water>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "basic_water";
+          rr:datatype xsd:double;
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#polio>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:double;
+          rr:column "polio"
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#age1_4mort>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "age1_4mort";
+          rr:termType rr:Literal;
+          rr:datatype xsd:double
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#infant_deaths>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "infant_deaths";
+          rr:datatype xsd:double
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#life_exp60>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:double;
+          rr:column "life_exp60";
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#adult_mortality>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:double;
+          rr:termType rr:Literal;
+          rr:column "adult_mortality"
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#life_expectancy>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "life_expectancy";
+          rr:datatype xsd:double
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/life_expectancy#year>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer;
+          rr:column "year"
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "region";
+          rr:datatype xsd:string;
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://example.org/life_expectancy#region>
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT * FROM \"life_expectancy\""
+    ];
+  rr:subjectMap [ a rr:SubjectMap, rr:TermMap;
+      rr:termType rr:BlankNode;
+      rr:class <http://example.org/life_expectancy>;
+      rr:template "ontop-bnode-1{country}/{country_code}/{region}/{year}/{life_expectancy}/{life_exp60}/{adult_mortality}/{infant_deaths}/{age1_4mort}/{alcohol}/{bmi}/{age5_19thinness}/{age5_19obesity}/{hepatitis}/{measles}/{polio}/{diphtheria}/{basic_water}/{doctors}/{hospitals}/{gni_capita}/{gghe_d}/{che_gdp}/{une_pop}/{une_infant}/{une_life}/{une_hiv}/{une_gni}/{une_poverty}/{une_edu_spend}/{une_literacy}/{une_school}"
+    ] .
+
+<urn:MAPPING-ID2> a rr:TriplesMap;
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:class <http://example.org/relay_whs>;
+      rr:template "ontop-bnode-2{country}/{indicator}/{value}";
+      rr:termType rr:BlankNode
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:predicate <http://example.org/relay_whs#country>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:column "country";
+          rr:datatype xsd:string;
+          rr:termType rr:Literal
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "value";
+          rr:datatype xsd:double
+        ];
+      rr:predicate <http://example.org/relay_whs#value>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:datatype xsd:string;
+          rr:column "indicator";
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://example.org/relay_whs#indicator>
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT * FROM \"relay_whs\""
+    ] .

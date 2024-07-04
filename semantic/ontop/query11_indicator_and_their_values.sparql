@@ -1,0 +1,6 @@
+PREFIX : <http://example.org/voc#>
+SELECT ?country ?indicator ?value {
+  ?country a :Country ;
+           :hasIndicator ?indicator ;
+           :hasValue ?value .
+}

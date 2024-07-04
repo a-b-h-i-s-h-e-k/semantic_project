@@ -1,0 +1,5 @@
+PREFIX : <http://example.org/voc#>
+SELECT ?country ?hospitals {
+  ?country a :Country ;
+           :hasHospitals ?hospitals .
+}

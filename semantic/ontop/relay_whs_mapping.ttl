@@ -1,0 +1,9 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix : <http://example.org/voc#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#TriplesMap2>
+    rr:logicalTable [ rr:tableName "relay_whs" ];
+    rr:subjectMap [ rr:template "http://example.org/relay_whs/{Country}" ; rr:class :Country ];
+    rr:predicateObjectMap [ rr:predicate :hasIndicator ; rr:objectMap [ rr:column "Indicator" ; rr:datatype xsd:string ] ] ;
+    rr:predicateObjectMap [ rr:predicate :hasValue ; rr:objectMap [ rr:column "Value" ; rr:datatype xsd:decimal ] ] .

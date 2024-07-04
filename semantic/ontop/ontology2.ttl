@@ -1,0 +1,98 @@
+@prefix : <http://example.org/voc#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+# Classes
+:Country a rdfs:Class .
+:CountryCode a rdfs:Class .
+:Region a rdfs:Class .
+:Year a rdfs:Class .
+:LifeExpectancy a rdfs:Class .
+:LifeExp60 a rdfs:Class .
+:AdultMortality a rdfs:Class .
+:InfantDeaths a rdfs:Class .
+:Age1_4Mort a rdfs:Class .
+:Alcohol a rdfs:Class .
+:BMI a rdfs:Class .
+:Age5_19Thinness a rdfs:Class .
+:Age5_19Obesity a rdfs:Class .
+:Hepatitis a rdfs:Class .
+:Measles a rdfs:Class .
+:Polio a rdfs:Class .
+:Diphtheria a rdfs:Class .
+:BasicWater a rdfs:Class .
+:Doctors a rdfs:Class .
+:Hospitals a rdfs:Class .
+:GNICapita a rdfs:Class .
+:GGHED a rdfs:Class .
+:CHEGDP a rdfs:Class .
+:UNEPop a rdfs:Class .
+:UNEInfant a rdfs:Class .
+:UNELife a rdfs:Class .
+:UNEHIV a rdfs:Class .
+:UNEGNI a rdfs:Class .
+:UNEPoverty a rdfs:Class .
+:UNEEduSpend a rdfs:Class .
+:UNELiteracy a rdfs:Class .
+:UNESchool a rdfs:Class .
+:RelayWHS a rdfs:Class .
+
+# Data Properties
+:hasCountryCode a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:string .
+:hasRegion a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:string .
+:hasYear a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:integer .
+:hasLifeExpectancy a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasLifeExp60 a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasAdultMortality a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasInfantDeaths a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasAge1_4Mort a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasAlcohol a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasBMI a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasAge5_19Thinness a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasAge5_19Obesity a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasHepatitis a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasMeasles a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:integer .
+:hasPolio a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasDiphtheria a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasBasicWater a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasDoctors a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasHospitals a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasGNICapita a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasGGHED a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasCHEGDP a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasUNEPop a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasUNEInfant a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasUNELife a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasUNEHIV a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasUNEGNI a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasUNEPoverty a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasUNEEduSpend a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasUNELiteracy a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasUNESchool a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:decimal .
+:hasIndicator a rdf:Property ; rdfs:domain :RelayWHS ; rdfs:range xsd:string .
+:hasValue a rdf:Property ; rdfs:domain :RelayWHS ; rdfs:range xsd:decimal .
+
+# Object Properties
+:relatedTo a rdf:Property ; rdfs:domain :Country ; rdfs:range :RelayWHS .
+
+# Annotation Properties
+:hasAnnotation a rdf:Property ; rdfs:domain :Country ; rdfs:range xsd:string .
+
+# Relationships (Examples)
+:highAlcoholConsumptionLeadsToLowerLifeExpectancy a owl:ObjectProperty ; rdfs:domain :Country ; rdfs:range :Country .
+:lowBasicWaterAccessImpactsHealth a owl:ObjectProperty ; rdfs:domain :Country ; rdfs:range :Country .
+:highBMIImpactsHealth a owl:ObjectProperty ; rdfs:domain :Country ; rdfs:range :Country .
+:educationSpendingAffectsLiteracy a owl:ObjectProperty ; rdfs:domain :Country ; rdfs:range :Country .
+:povertyImpactsLifeExpectancy a owl:ObjectProperty ; rdfs:domain :Country ; rdfs:range :Country .
+
+# Subclass Relationships (Examples)
+:Alcohol rdfs:subClassOf :LifeExpectancy .
+:BasicWater rdfs:subClassOf :LifeExpectancy .
+:BMI rdfs:subClassOf :LifeExpectancy .
+:Doctors rdfs:subClassOf :LifeExpectancy .
+:Hospitals rdfs:subClassOf :LifeExpectancy .
+
+# Individual and Annotation Counts
+:Country rdfs:comment "Total Individuals: 195" .
+:Country rdfs:comment "Total Annotations: 5" .

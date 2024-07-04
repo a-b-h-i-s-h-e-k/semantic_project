@@ -1,0 +1,17 @@
+[PrefixDeclaration]
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+owl:		http://www.w3.org/2002/07/owl#
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+
+[MappingDeclaration] @collection [[
+mappingId	MAPPING-ID1
+target		_:ontop-bnode-1{country}/{country_code}/{region}/{year}/{life_expectancy}/{life_exp60}/{adult_mortality}/{infant_deaths}/{age1_4mort}/{alcohol}/{bmi}/{age5_19thinness}/{age5_19obesity}/{hepatitis}/{measles}/{polio}/{diphtheria}/{basic_water}/{doctors}/{hospitals}/{gni_capita}/{gghe_d}/{che_gdp}/{une_pop}/{une_infant}/{une_life}/{une_hiv}/{une_gni}/{une_poverty}/{une_edu_spend}/{une_literacy}/{une_school} a <http://example.org/life_expectancy> ; <http://example.org/life_expectancy#country> {country}^^xsd:string ; <http://example.org/life_expectancy#country_code> {country_code}^^xsd:string ; <http://example.org/life_expectancy#region> {region}^^xsd:string ; <http://example.org/life_expectancy#year> {year}^^xsd:integer ; <http://example.org/life_expectancy#life_expectancy> {life_expectancy}^^xsd:double ; <http://example.org/life_expectancy#life_exp60> {life_exp60}^^xsd:double ; <http://example.org/life_expectancy#adult_mortality> {adult_mortality}^^xsd:double ; <http://example.org/life_expectancy#infant_deaths> {infant_deaths}^^xsd:double ; <http://example.org/life_expectancy#age1_4mort> {age1_4mort}^^xsd:double ; <http://example.org/life_expectancy#alcohol> {alcohol}^^xsd:double ; <http://example.org/life_expectancy#bmi> {bmi}^^xsd:double ; <http://example.org/life_expectancy#age5_19thinness> {age5_19thinness}^^xsd:double ; <http://example.org/life_expectancy#age5_19obesity> {age5_19obesity}^^xsd:double ; <http://example.org/life_expectancy#hepatitis> {hepatitis}^^xsd:double ; <http://example.org/life_expectancy#measles> {measles}^^xsd:double ; <http://example.org/life_expectancy#polio> {polio}^^xsd:double ; <http://example.org/life_expectancy#diphtheria> {diphtheria}^^xsd:double ; <http://example.org/life_expectancy#basic_water> {basic_water}^^xsd:double ; <http://example.org/life_expectancy#doctors> {doctors}^^xsd:double ; <http://example.org/life_expectancy#hospitals> {hospitals}^^xsd:double ; <http://example.org/life_expectancy#gni_capita> {gni_capita}^^xsd:double ; <http://example.org/life_expectancy#gghe_d> {gghe_d}^^xsd:double ; <http://example.org/life_expectancy#che_gdp> {che_gdp}^^xsd:double ; <http://example.org/life_expectancy#une_pop> {une_pop}^^xsd:double ; <http://example.org/life_expectancy#une_infant> {une_infant}^^xsd:double ; <http://example.org/life_expectancy#une_life> {une_life}^^xsd:double ; <http://example.org/life_expectancy#une_hiv> {une_hiv}^^xsd:double ; <http://example.org/life_expectancy#une_gni> {une_gni}^^xsd:double ; <http://example.org/life_expectancy#une_poverty> {une_poverty}^^xsd:double ; <http://example.org/life_expectancy#une_edu_spend> {une_edu_spend}^^xsd:double ; <http://example.org/life_expectancy#une_literacy> {une_literacy}^^xsd:double ; <http://example.org/life_expectancy#une_school> {une_school}^^xsd:double . 
+source		SELECT * FROM "life_expectancy"
+
+mappingId	MAPPING-ID2
+target		_:ontop-bnode-2{country}/{indicator}/{value} a <http://example.org/relay_whs> ; <http://example.org/relay_whs#country> {country}^^xsd:string ; <http://example.org/relay_whs#indicator> {indicator}^^xsd:string ; <http://example.org/relay_whs#value> {value}^^xsd:double . 
+source		SELECT * FROM "relay_whs"
+]]
+

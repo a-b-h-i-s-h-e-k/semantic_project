@@ -1,0 +1,95 @@
+# Project Steps for Health Domain Data Integration
+# The project involves integrating health data from Kaggle and WHO using 
+# semantic web technologies. Here’s how to proceed:
+
+# Step 1: Set Up Ontop CLI and PostgreSQL
+# 1.1 Download Ontop CLI
+
+
+# Download Ontop CLI
+wget https://github.com/ontop/ontop/releases/download/ontop-5.1.2/ontop-cli-5.1.2.zip
+
+# Unzip Ontop CLI
+unzip ontop-cli-5.1.2.zip -d ontop
+cd ontop
+# 1.2 Download JDBC Driver
+
+# Download JDBC Driver for PostgreSQL
+wget https://jdbc.postgresql.org/download/postgresql-42.2.20.jar -P jdbc/
+
+# Step 2: Set Up PostgreSQL Database
+
+# 2.1 Install PostgreSQL
+
+# Install PostgreSQL
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+# 2.2 Start and Enable PostgreSQL Service
+
+# Start PostgreSQL service
+sudo systemctl start postgresql
+
+# Enable PostgreSQL service to start on boot
+sudo systemctl enable postgresql
+
+
+# 2.3 Configure PostgreSQL
+
+# Switch to PostgreSQL user and set up database
+sudo -i -u postgres
+psql
+
+# Create database and user
+CREATE DATABASE health_data;
+CREATE USER healthuser WITH ENCRYPTED PASSWORD 'yourpassword';
+GRANT ALL PRIVILEGES ON DATABASE health_data TO healthuser;
+
+# Exit PostgreSQL
+\q
+exit
+
+
+
+Stop PostgreSQL Service:
+
+bash
+Copy code
+sudo systemctl stop postgresql
+Start PostgreSQL in Single-User Mode:
+
+bash
+Copy code
+sudo -u postgres /usr/lib/postgresql/15/bin/postgres --single -D /etc/postgresql/15/main
+Once in Single-User Mode, Set the Password for postgres User:
+
+After the single-user mode starts, you will get a prompt where you can run SQL commands directly.
+
+
+ALTER USER postgres PASSWORD 'newpassword';
+\q
+Start PostgreSQL Service Again:
+
+
+sudo systemctl start postgresql
+#Test the New Password:
+
+
+psql -U postgres -d postgres
+
+
+
+
+
+
+
+
+
+
+######################################################################################################################################################
+
+# Log into PostgreSQL as the healthuser:
+
+psql -U healthuser -d health_data
+
+

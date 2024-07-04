@@ -1,0 +1,4 @@
+PREFIX : <http://example.org/voc#>
+SELECT ?country ?measles {
+  ?country :hasMeasles ?measles .
+}

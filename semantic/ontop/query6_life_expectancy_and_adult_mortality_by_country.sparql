@@ -1,0 +1,6 @@
+PREFIX : <http://example.org/voc#>
+SELECT ?country ?lifeExpectancy ?adultMortality {
+  ?country a :Country ;
+           :hasLifeExpectancy ?lifeExpectancy ;
+           :hasAdultMortality ?adultMortality .
+}

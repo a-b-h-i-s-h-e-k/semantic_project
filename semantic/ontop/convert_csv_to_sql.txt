@@ -1,0 +1,40 @@
+import pandas as pd
+
+def csv_to_sql(csv_file, table_name):
+    df = pd.read_csv(csv_file)
+    columns = df.columns.tolist()
+    
+    sql_statements = []
+    
+    for index, row in df.iterrows():
+        values = []
+        for col in columns:
+            value = row[col]
+            if pd.isnull(value):
+                values.append('NULL')
+            elif isinstance(value, str):
+                value = value.replace("'", "''")
+                values.append(f"'{value}'")
+            else:
+                values.append(str(value))
+        sql = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES ({', '.join(values)});"
+        sql_statements.append(sql)
+    
+    return sql_statements
+
+def save_sql_to_file(sql_statements, file_name):
+    with open(file_name, 'w') as f:
+        for statement in sql_statements:
+            f.write(statement + '\n')
+
+# Convert and save SQL statements for WHO Life Expectancy data
+who_csv = 'who_life_exp.csv'
+who_table_name = 'life_expectancy'
+who_sql_statements = csv_to_sql(who_csv, who_table_name)
+save_sql_to_file(who_sql_statements, 'who_life_exp.sql')
+
+# Convert and save SQL statements for RELAY WHS data
+relay_csv = 'RELAY_WHS.csv'
+relay_table_name = 'relay_whs'
+relay_sql_statements = csv_to_sql(relay_csv, relay_table_name)
+save_sql_to_file(relay_sql_statements, 'relay_whs.sql')
